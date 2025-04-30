@@ -9,5 +9,9 @@ clean:
 	mvn clean
 
 
-run:
-	java -jar target/java-instrumentation-1.0-SNAPSHOT.jar
+run-app:
+	java -jar java-app/target/java-app-1.0-SNAPSHOT.jar
+
+
+run-app-with-agent:
+	java -javaagent:java-agent/target/java-agent-1.0-SNAPSHOT.jar -jar java-app/target/java-app-1.0-SNAPSHOT.jar
