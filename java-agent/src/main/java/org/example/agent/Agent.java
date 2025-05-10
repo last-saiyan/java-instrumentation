@@ -1,7 +1,8 @@
 package org.example.agent;
 
 import net.bytebuddy.agent.builder.AgentBuilder;
-import net.bytebuddy.asm.Advice;
+import net.bytebuddy.implementation.FixedValue;
+import net.bytebuddy.implementation.MethodDelegation;
 import net.bytebuddy.matcher.ElementMatchers;
 import java.lang.instrument.Instrumentation;
 
@@ -10,7 +11,8 @@ public class Agent {
         new AgentBuilder.Default()
                 .type(ElementMatchers.nameEndsWith("Person"))
                 .transform((builder, typeDescription, classLoader, module, protectionDomain) ->
-                        builder.visit(Advice.to(SayHelloAdvice.class).on(ElementMatchers.named("sayHello")))
+                        builder.method(ElementMatchers.named("sayHello2"))
+                                .intercept(MethodDelegation.to(SayHelloInterceptor.class))
                 )
                 .installOn(inst);
     }

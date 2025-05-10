@@ -12,6 +12,7 @@
     <modules>
         <module>java-app</module>
         <module>java-agent</module>
+        <module>java-bytebuddy-example</module>
     </modules>
 
     <properties>
