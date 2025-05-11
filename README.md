@@ -7,7 +7,15 @@ simple hello world java instrumentation example
 # builds the jar
 make
 ```
+
+
 ```
-# runs the jar
-make run
+# run the application jar
+java -jar java-app/target/java-app-1.0-SNAPSHOT.jar
+```
+
+
+```
+# application with agent
+java -javaagent:java-agent/target/java-agent-1.0-SNAPSHOT.jar -jar java-app/target/java-app-1.0-SNAPSHOT.jar
 ```
